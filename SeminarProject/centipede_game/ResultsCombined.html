@@ -1,0 +1,55 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Results of all rounds
+{% endblock %}
+
+{% block content %}
+
+<!--&lt;!&ndash; Results if no player takes &ndash;&gt;-->
+<!--{% if group.round_outcome == 0 %}-->
+<!--    <div class="card my-5"><div class="card-header">Both your opponent and you decided to pass in all rounds</div></div>-->
+<!--&lt;!&ndash;    <p>Both the other player and you decided to pass in all rounds.</p>&ndash;&gt;-->
+<!--    <div class="card my-3">-->
+<!--    <div class="card-body">-->
+<!--    {% if player.id_in_group == 1 %}-->
+<!--        <p>Since you are RED player, your payoff is: {{ large_pile_pass }}</p>-->
+<!--        <p>Your opponent's payoff is: {{ small_pile_pass }}</p>-->
+<!--    {% else %}-->
+<!--        <p>Since you are BLUE player, your payoff is: {{ small_pile_pass }}</p>-->
+<!--        <p>Your opponent's payoff is: {{ large_pile_pass }}</p>-->
+<!--    {% endif %}-->
+<!--    </div>-->
+<!--    </div>-->
+
+<!--&lt;!&ndash; Results if a player takes &ndash;&gt;-->
+<!--{% elif  group.round_outcome > 0  and group.round_outcome == player.id_in_group %}-->
+<!--    <div class="card my-5"><div class="card-header">You decided to take the large pile at node {{last_node}}</div></div>-->
+<!--    <div class="card my-3">-->
+<!--    <div class="card-body">-->
+<!--&lt;!&ndash;        <p>You decided to take the large pile.</p>&ndash;&gt;-->
+<!--        <p>Your payoff is: {{ large_pile }}</p>-->
+<!--        <p>Your opponent's payoff is: {{ small_pile }}</p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--{% else %}-->
+<!--    <div class="card my-5"><div class="card-header">Your opponent decided to take the large pile at node {{last_node}}</div></div>-->
+<!--    <div class="card my-3">-->
+<!--    <div class="card-body">-->
+<!--&lt;!&ndash;        <p>Your opponent decided to take the large pile.</p>&ndash;&gt;-->
+<!--        <p>Your payoff is: {{ small_pile }}</p>-->
+<!--        <p>Your opponent's payoff is: {{ large_pile }}</p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--{% endif %}-->
+
+<!-- Next button -->
+{% if player.round_number < C.NUM_ROUNDS %}
+   <input class="btn btn-primary btn-large btn-primary next-button otree-btn-next" type="submit" value="Start next round"/>
+{% else %}
+
+{% endif %}
+
+{% endblock %}
+

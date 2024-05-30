@@ -1,0 +1,171 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+<!-- This HTML file is the first variation of Decision.html
+it supposedly inputs the take/pass buttons into the graphic
+will have to test later
+-->
+    Group {{ group.id_in_subsession }} &ndash; Node {{ node }} &ndash; Round {{ group.round_number }}
+{% endblock %}
+
+{% block content %}
+<h3> Make Your Move!</h3>
+<!-- Player's color info -->
+<div class="card my-5">
+    {% if player.id_in_group == 1 %}
+    <div class="card-header">You are the <font style="color:red;">RED</font> player</div>
+    {% else %}
+    <div class="card-header">You are the <font style="color:blue;">BLUE</font> player</div>
+    {% endif %}
+</div>
+
+<!-- Opponent's decision -->
+{% if node > 1 %}
+<div class="card my-5">
+    <div class="card-header">Your opponent decided to pass</div>
+</div>
+{% endif %}
+
+<!-- Centipede -->
+<div class="card my-3">
+    <div class="card-body">
+
+        <!-- Piles -->
+        <p class="card-text">The Large Pile is: {{ large_pile }}</p>
+        <p class="card-text">The Small Pile is: {{ small_pile }}</p>
+
+        <br>
+        <p>Do you want to take the Large Pile OR pass for the chance to win big?</p>
+    </div>
+</div>
+
+    <input type="hidden" name="stop" id="stop"/>
+
+    <svg class="bottom" id="svg" width="900" height="300" xmlns:html="http://www.w3.org/1999/xhtml">
+
+        <defs>
+            <marker id="arrowhead" markerWidth="5" markerHeight="5"
+            refX="0" refY="2.5" orient="auto">
+                <polygon points="0 0, 5 2.5, 0 5" />
+            </marker>
+        </defs>
+<!-- 1st node -->
+        <g>
+            <circle cx="15" cy="65" r="14" stroke="black" stroke-width="2" fill="red" />
+            <line x1="30" y1="65" x2="90" y2="65" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="15" y1="80" x2="15" y2="190" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <text x="15" y="220" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">4</text>
+            <text x="15" y="245" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">1</text>
+        </g>
+<!-- 2nd node -->
+        <g>
+            <circle cx="115" cy="65" r="15" stroke="black" stroke-width="2" fill="blue" />
+            <line x1="130" y1="65" x2="180" y2="65" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="115" y1="80" x2="115" y2="190" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <text x="115" y="220" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">2</text>
+            <text x="115" y="245" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">8</text>
+        </g>
+<!-- 3rd node -->
+        <g>
+            <circle cx="205" cy="65" r="14" stroke="black" stroke-width="2" fill="red" />
+            <line x1="220" y1="65" x2="280" y2="65" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="205" y1="80" x2="205" y2="190" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <text x="205" y="220" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">16</text>
+            <text x="205" y="245" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">4</text>
+        </g>
+<!-- 4th node -->
+        <g>
+            <circle cx="305" cy="65" r="15" stroke="black" stroke-width="2" fill="blue" />
+            <line x1="320" y1="65" x2="370" y2="65" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="305" y1="80" x2="305" y2="190" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <text x="305" y="220" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">8</text>
+            <text x="305" y="245" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">32</text>
+        </g>
+<!-- 5th node -->
+        <g>
+            <circle cx="395" cy="65" r="14" stroke="black" stroke-width="2" fill="red" />
+            <line x1="410" y1="65" x2="470" y2="65" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="395" y1="80" x2="395" y2="190" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <text x="395" y="220" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">64</text>
+            <text x="395" y="245" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">16</text>
+        </g>
+<!-- 6th node -->
+        <g>
+            <circle cx="495" cy="65" r="15" stroke="black" stroke-width="2" fill="blue" />
+            <line x1="510" y1="65" x2="570" y2="65" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="495" y1="80" x2="495" y2="190" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <text x="495" y="220" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">32</text>
+            <text x="495" y="245" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">128</text>
+            <text x="600" y="65" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">idk</text>
+            <text x="600" y="80" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">idk</text>
+        </g>
+        <g class="button btn btn-primary" id="btnPass" type="submit" value="False" required="Pass">
+            <rect x="35" y="50" width="50" height="30" stroke="black" stroke-width="2"></rect>
+            <text x="45" y="70"
+            style="writing-mode: horizontal-tb; glyph-orientation-horizontal: 0;"
+            font-size="17" fill="black"
+            >Pass</text>
+
+        </g>
+
+        <g class="button btn btn-primary" id="btnTake" value="True" required="Take">
+            <rect x="1" y="100" width="50" height="30" stroke="black" stroke-width="2"></rect>
+            <text x="10" y="120"
+            style="writing-mode: horizontal-tb; glyph-orientation-horizontal: 0;"
+            font-size="17" fill="black"
+            >Take</text>
+            <input id="take" type="submit" name="take" value="True" style="display: none;" required >Take
+        </g>
+
+        </svg>
+    <p></p>
+    <button class="otree-btn-next btn btn-primary" id="nextButton" disabled>Next</button>
+    <script>
+        const btnT = document.getElementById('btnTake');
+        const btnP = document.getElementByID('btnPass');
+
+        function onClick(event) {
+           // btnP.style.fill = 'blue';
+           // btnT.style.fill = 'blue';
+           // event.target.style.fill = 'red';
+           // $("button.active").removeClass("active");
+           // $(this).addClass("active");
+           // event.target.style.fill = 'red';
+
+            document.getElementById('stop').value = event.target.value;
+            document.getElementById('nextButton').removeAttribute("disabled");
+        }
+
+        btnP.addEventListener('click', onClick);
+        btnT.addEventListener('click', onClick);
+    </script>
+
+    <style>
+      .active {
+        fill: red;
+      }
+      .button {
+        fill: white;
+        pointer-events: all;
+        display: inline-block;
+        border-radius: 10px;
+        border: 4px double #cccccc;
+        color: black;
+        text-align: center;
+        font-size: 15px;
+        padding: 10px;
+        width: 50px;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+      }
+      .button:hover {
+        fill: pink;
+      }
+    </style>
+
+{% endblock %}
