@@ -18,9 +18,77 @@
 
 <input type="hidden" name="take" id="take_here"/>-->
 <p></p>
+<div>
+{# Scalable vector for payoffs #}
+    {{ if group.treatment == 'control' }}
+    <svg class="middle" id="svg" width="650" height="205" fill="white" style="border: 2px rgb(204, 204, 204); margin-top: 10px; margin-right: 10px;">
+        <g>
+            <text x="610" y="65"
+                  dominant-baseline="middle" text-anchor="middle"
+                  font-size="20" font-weight="bold"
+                  fill="red"
+            >265</text>
+            <text x="610" y="85"
+                  dominant-baseline="middle" text-anchor="middle"
+                  font-size="20" font-weight="bold"
+                  fill="blue"
+            >64</text>
+        </g>
+    </svg>
+    {{ endif }}
+    {{ if group.treatment == 'higher_fixed' }}
+    <svg class="middle" id="svg" width="650" height="205" fill="white" style="border: 2px rgb(204, 204, 204); margin-top: 10px; margin-right: 10px;">
+        <g>
+            <text x="610" y="65"
+                  dominant-baseline="middle" text-anchor="middle"
+                  font-size="20" font-weight="bold"
+                  fill="red"
+            >500</text>
+            <text x="610" y="85"
+                  dominant-baseline="middle" text-anchor="middle"
+                  font-size="20" font-weight="bold"
+                  fill="blue"
+            >120</text>
+        </g>
+    </svg>
+    {{ endif }}
+        {{ if group.treatment == 'higher_fixed' }}
+    <svg class="middle" id="svg" width="650" height="205" fill="white" style="border: 2px rgb(204, 204, 204); margin-top: 10px; margin-right: 10px;">
+        <g>
+            <text x="610" y="65"
+                  dominant-baseline="middle" text-anchor="middle"
+                  font-size="20" font-weight="bold"
+                  fill="red"
+            >fixed</text>
+            <text x="610" y="85"
+                  dominant-baseline="middle" text-anchor="middle"
+                  font-size="20" font-weight="bold"
+                  fill="blue"
+            >fixed</text>
+        </g>
+    </svg>
+    {{ endif }}
+        {{ if group.treatment == 'higher_random' }}
+    <svg class="middle" id="svg" width="680" height="205" fill="white" style="border: 2px rgb(204, 204, 204); margin-top: 10px; margin-right: 10px;">
+        <g>
+            <text x="630" y="65"
+                  dominant-baseline="middle" text-anchor="middle"
+                  font-size="20" font-weight="bold"
+                  fill="red"
+            >0-1000</text>
+            <text x="630" y="85"
+                  dominant-baseline="middle" text-anchor="middle"
+                  font-size="20" font-weight="bold"
+                  fill="blue"
+            >0-240</text>
+        </g>
+    </svg>
+    {{ endif }}
+
+
 {# Scalable vector graph that moves take/pass buttons along the centipede as the game progresses #}
 {{ if group.node == 1 }}
-<div>
+
     <svg class="top" id="svg" width="650" height="205" fill="white" style="border: 2px rgb(204, 204, 204); margin-top: 10px; margin-right: 10px;">
         <g>
             <rect x="35" y="50" width="50" height="30" stroke="black" stroke-width="2"></rect>
@@ -191,8 +259,6 @@
             <line x1="505" y1="80" x2="505" y2="140" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
             <text x="505" y="170" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">32</text>
             <text x="505" y="195" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">128</text>
-            <text x="610" y="65" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">idk</text>
-            <text x="610" y="80" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">idk</text>
         </g>
     </svg>
        <!--
@@ -223,6 +289,10 @@
       .top{
       position: absolute;
       z-index: 1;
+      }
+      .middle{
+      position: absolute;
+      z-index: 0.5;
       }
       .bottom{
       z-index: 0;
