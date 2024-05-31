@@ -3,7 +3,9 @@
 {% load otree static %}
 
 {% block title %}
-    Group {{ group.id_in_subsession }} &ndash; Node {{ node }} &ndash; Round {{ group.round_number }}, subsession round {{ subsession.round_number }}
+    Group {{ group.id_in_subsession }} &ndash; Node {{ node }} &ndash;
+    Round {{ group.round_number }}, subsession round {{ subsession.round_number }}
+    Treatment {{ group.treatment }}
 {% endblock %}
 
 {% block content %}

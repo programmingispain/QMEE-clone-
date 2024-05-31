@@ -3,9 +3,30 @@ from os import environ
 SESSION_CONFIGS = [
      dict(
          name='centipede_game',
-         display_name='Centipede',
+         display_name='Centipede Game',
          app_sequence=['centipede_game'],
-         num_demo_participants=6,
+         num_demo_participants=4,
+     ),
+     dict(
+        name='centipede_game_control',
+        display_name='Centipede Game - Control',
+        app_sequence=['centipede_game'],
+        treatment='control',
+        num_demo_participants=4,
+     ),
+     dict(
+        name='centipede_game_higher_fixed',
+        display_name='Centipede Game - Higher Fixed',
+        app_sequence=['centipede_game'],
+        treatment='higher_fixed',
+        num_demo_participants=4,
+     ),
+     dict(
+        name='centipede_game_higher_random',
+        display_name='Centipede Game - Higher Random',
+        app_sequence=['centipede_game'],
+        treatment='higher_random',
+        num_demo_participants=4,
      ),
 ]
 
