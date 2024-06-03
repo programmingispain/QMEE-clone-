@@ -1,46 +1,30 @@
+{{ extends "global/Page.html" }}
+{{ load otree static }}
 
-<div class="card bg-light m-3">
-    <div class="card-body">
+{{ block title }}
+    Instructions
+{{ endblock }}
 
-    <h3>
-        Instructions
-    </h3>
+{{ block content }}
+<!-- What exactly do we get from randomising the order of the treatments? is that not
+ counterintuitive/ doesnt it make it more difficult to explain the instructions/ make what we are studing way too obvious???
+ maybe we should only have an additional instruction line for higher_random and the instructions pages are inbetween treatments  but are
+ only a refresher-->
+{{ if group.treatment == 'control' }}
+ In these {{ ROUND_INSTRUCT_NUM }} rounds, payoffs will increase by a multiplication of two. Please keep in mind that
+the large and small piles alternate each turn.
+{{ endif }}
 
-    <link rel="stylesheet" type="text/css"
-          href="{{ static 'global/matrix.css' }}"/>
+{{ if group.treatment == 'higher_fixed' }}
+ In these {{ ROUND_INSTRUCT_NUM }} rounds, payoffs will increase by a multiplication of two (x2), excluding the final
+payoff if passed. The final payoff is increased by a multiple of about 4 (x~4). Please keep in mind that
+the large and small piles alternate each turn.
+{{ endif}}
 
-    <p>
-        In this study, you will be randomly and anonymously paired with another
-        participant.
-        Each of you simultaneously and privately chooses whether you want to
-        cooperate or defect.
-        Your payoffs will be determined by the choices of both as below:
-    </p>
-    <p><i>In each cell, the amount to the left is the payoff for
-        you and to the right for the other participant.</i></p>
+{{ if group.treatment == 'higher_random' }}
+ In these {{ ROUND_INSTRUCT_NUM }} rounds, payoffs will increase by a multiplication of two, excluding the final
+payoff if passed. The final payoff will either result in an extremely high payoff or nothing at all for both players.
+Please keep in mind that the large and small piles alternate each turn.
+{{ endif }}
 
-    <table class='table table-bordered text-center'
-           style='width: auto; margin: auto'>
-        <tr>
-            <th colspan=2 rowspan=2></th>
-            <th colspan=2>The Other Participant</th>
-        </tr>
-        <tr>
-            <th>Cooperate</th>
-            <th>Defect</th>
-        </tr>
-        <tr>
-            <th rowspan=2><span style="transform: rotate(-90deg);">You</span></th>
-            <th>Cooperate</th>
-            <td>{{ Constants.both_cooperate_payoff }}, {{ Constants.both_cooperate_payoff }}</td>
-            <td>0, {{ Constants.betray_payoff }}</td>
-        </tr>
-        <tr>
-            <th>Defect</th>
-            <td>{{ Constants.betray_payoff }}, 0</td>
-            <td>{{ Constants.both_defect_payoff }}, {{ Constants.both_defect_payoff }}</td>
-        </tr>
-    </table>
-
-</div>
-</div>
+{{ endblock }}

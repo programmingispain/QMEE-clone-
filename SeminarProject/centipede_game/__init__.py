@@ -18,6 +18,7 @@ class C(BaseConstants):
     NUM_NODES = 6  # number of decision points ("nodes" or turns) per round. Essentially, how long the centipede is.
     # NOTE: each player thus takes (NUM_NODES/2) turns rach round
     NUM_ROUNDS = 4  # starting with 1 for now to be simple
+    ROUND_INSTRUCT_NUM = NUM_ROUNDS / 3  # number of rounds per treatment. only used on instructions/welcome pages
 
     # create payoffs for turn 1 in all games, as well as multiplier
     LARGE_PILE = 4
@@ -86,7 +87,7 @@ def creating_session(subsession):
     for group in subsession.get_groups():
         if not treatment_hardcoded:  # checks for hardcoded exception
             treatment_order = group.treatment_order.split(',')
-            round_index = (group.round_number - 1) % len(treatment_order) # uses modulo in case more rounds than treatments
+            round_index = (group.round_number - 1) % len(treatment_order)  # uses modulo in case more rounds than treatments
             group.treatment = treatment_order[round_index]
 
     # set payoffs according to treatment
@@ -149,6 +150,7 @@ class Group(BaseGroup):
     def advance_node(group: 'Group'):
         group.node += 1
 
+    # noinspection PyMethodParameters
     def reshuffle_group(group: 'Group'):  # used to randomize positions within a group
         players = group.get_players()
         random.shuffle(players)
@@ -188,7 +190,7 @@ class Decision(Page):
 
     @staticmethod
     def is_displayed(player: Player):
-        group = player.group # display page to the appropriate player using even/odd round numbers
+        group = player.group  # display page to the appropriate player using even/odd round numbers
         return (
                 (player.id_in_group == 1 and player.group.node % 2 != 0 and group.round_active) or
                 (player.id_in_group == 2 and player.group.node % 2 == 0 and group.round_active)

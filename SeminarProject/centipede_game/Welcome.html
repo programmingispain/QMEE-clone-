@@ -1,39 +1,113 @@
 {% extends "global/Page.html" %}
-{% load otree static %}
-
+{% load static %}
+{{ load otree static }}
 {% block title %}
-    Welcome
+<h1>Welcome to</h1>
 {% endblock %}
 
 {% block content %}
-
 <p xmlns="http://www.w3.org/1999/html">
-    welcome
-</p>
+    <div id="otree-header" class="header">
+        <h1 id="title">GAME NAME HERE</h1>
+<p xmlns="http://www.w3.org/1999/html"></p>
+<div id="otree-body" class="container">
+    <p id="subHead">A game created by Cold Stone Creamery Gmbh</p>
+    </div>
+    General Rules:
+<p></p>
+    1. Please look only at your own devices to maintain integrity of the experiment.
+    <p></p>
+    2. If you have any questions, or need help, ask an experimenter.
+    <p></p>
+    3. Follow the general class rules
+<p></p>
 <p>
-    rules
+   <span>How the game works</span>
+    <style>
+        span {
+        font-size: 1.3em;
+        text-align: center;
+    </style>
 </p>
 
-<p>
-    how it works
-</p>
+    You will be randomly paired with another participant. Each of you will take turns playing {{ C.NUM_ROUNDS }} rounds of a game,
+    either taking or passing. There are two different payoff sizes, the large pile and the small pile.
+    <p> You will be assigned either the red or blue player each round. The red player chooses first each round.</p>
+    <p> If you take: the game ends and each player receives the listed payoffs for the turn.</p>
+    <p> If you pass: the decision is passed to the other player and the game continues. Each time the game is passed, the payoffs increase.</p>
+    <p>Payoff piles alternate each turn. This means that when it is your turn, the payoff you receive will always be the large pile while your partner
+    receives the small pile. If it is your partners turn, then you will receive the smaller pile while they receive
+    the large pile.</p>
 
-<p>
-    You and the other participants will be divided into two groups. Each group will contain half of the total number of participants.
-    <!--    The subjects will be divided into two groups, containing 10 subjects each.-->
-    The groups will be labeled the <strong><font style="color:red;">RED</font></strong> group and the <strong><font style="color:blue;">BLUE</font></strong> group.
-    <!--To determine which color you are, will you each please select an envelope as the experimenter passes by you.-->
-    <!--Added-->
-    Your group/color will be randomly determined at the beginning of the experiment.
-    Mind that you will be either <strong><font style="color:red;">RED</font></strong> or <strong><font style="color:blue;">BLUE</font></strong> for the entire experiment.
-</p>
 
+    INSTRUCTIONS TO ADD  but better --v
+    total prize received is added up from each round's results
+     After {{ C.ROUND_INSTRUCT_NUM }} rounds of a game, you and your partner will play a new version of the game.
+    we will be monitoring while you play. Make sure to confirm your choices by clicking the next button or else you
+    will not be able to move forward in the game.
+    <!-- do we want to add a timeout that pushes the round forward? so players -->
 <p>
-<!--    If you chose BLUE, you will be BLUE for the entire experiment.-->
-<!--    If you chose RED, you will be RED for the entire experiment.-->
-<!--    Please remember your color, because the instructions are slightly different for the BLUE and the RED subjects.-->
+</p>
+<style>
+p {
+  text-align: left;
+  font-size: 1.0em;
+}
+</style>
+</div>
+        <p>Example beginning game:</p>
+        <style>
+            html{
+            font-size: 1.2em;
+            }
+        </style>
+ <div>
+            <svg class="bottom" id="svg" width="300" height="205" style="border: 2px rgb(204, 204, 204); margin-top: 10px; margin-right: 10px;">
+
+        <defs>
+            <marker id="arrowhead" markerWidth="5" markerHeight="5"
+            refX="0" refY="2.5" orient="auto">
+                <polygon points="0 0, 5 2.5, 0 5" />
+            </marker>
+        </defs>
+<!-- 1st node -->
+        <g>
+            <circle cx="115" cy="65" r="14" stroke="black" stroke-width="2" fill="red" />
+            <line x1="130" y1="65" x2="190" y2="65" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="115" y1="80" x2="115" y2="140" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <text x="115" y="170" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">large pile</text>
+            <text x="115" y="195" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">small pile</text>
+            <text x="115" y="35" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">1st turn</text>
+        </g>
+<!-- 2nd node -->
+        <g>
+            <circle cx="215" cy="65" r="15" stroke="black" stroke-width="2" fill="blue" />
+            <line x1="230" y1="65" x2="280" y2="65" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="215" y1="80" x2="215" y2="140" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+            <text x="215" y="170" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">small pile</text>
+            <text x="215" y="195" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">large pile</text>
+            <text x="215" y="35" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">2nd turn</text>
+        </g>
+        <g>
+            <rect x="135" y="50" width="50" height="30" stroke="black" stroke-width="2" fill="white"></rect>
+            <text x="143" y="70"
+                style="writing-mode: horizontal-tb; glyph-orientation-horizontal: 0;"
+                font-size="17" fill="black"
+                >Pass</text>
+        </g>
+        <g>
+            <rect x="90" y="100" width="50" height="30" stroke="black" stroke-width="2" fill="white"></rect>
+            <text x="95" y="120"
+                style="writing-mode: horizontal-tb; glyph-orientation-horizontal: 0;"
+                font-size="17" fill="black"
+            >Take</text>
+        </g>
+            </svg>
+    </div>
+<p>
+
 </p>
 
     {% next_button %}
 
-{% endblock %}
+{{ endblock }}

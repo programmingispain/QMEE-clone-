@@ -85,7 +85,6 @@
     </svg>
     {{ endif }}
 
-
 {# Scalable vector graph that moves take/pass buttons along the centipede as the game progresses #}
 {{ if group.node == 1 }}
 
@@ -261,9 +260,20 @@
             <text x="505" y="195" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">128</text>
         </g>
     </svg>
-       <!--
-        </g> -->
 </div>
+<style>
+    .top{
+    position: absolute;
+    z-index: 1;
+    }
+.middle{
+    position: absolute;
+    z-index: 0.5;
+    }
+.bottom{
+    z-index: 0;
+    }
+</style>
    <!-- <button class="otree-btn-next btn btn-primary" id="nextButton" disabled>Next</button>
     <script>
         const btnT = document.getElementById('btnTake');
@@ -285,19 +295,6 @@
         btnT.addEventListener('click', onClick);
     </script>
 -->
-    <style>
-      .top{
-      position: absolute;
-      z-index: 1;
-      }
-      .middle{
-      position: absolute;
-      z-index: 0.5;
-      }
-      .bottom{
-      z-index: 0;
-      }
-    </style>
 <p></p>
 
 <!-- Player's color info -->
@@ -340,4 +337,4 @@
   </div>
 </div>
 
-{% endblock %}
+{{ endblock }}

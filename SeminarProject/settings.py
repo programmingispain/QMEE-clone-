@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
          name='centipede_game',
          display_name='Centipede Game',
          app_sequence=['centipede_game'],
-         num_demo_participants=2,
+         num_demo_participants=4,
      ),
      dict(
         name='centipede_game_control',
