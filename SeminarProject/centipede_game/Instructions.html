@@ -6,25 +6,5 @@
 {{ endblock }}
 
 {{ block content }}
-<!-- What exactly do we get from randomising the order of the treatments? is that not
- counterintuitive/ doesnt it make it more difficult to explain the instructions/ make what we are studing way too obvious???
- maybe we should only have an additional instruction line for higher_random and the instructions pages are inbetween treatments  but are
- only a refresher-->
-{{ if group.treatment == 'control' }}
- In these {{ ROUND_INSTRUCT_NUM }} rounds, payoffs will increase by a multiplication of two. Please keep in mind that
-the large and small piles alternate each turn.
-{{ endif }}
-
-{{ if group.treatment == 'higher_fixed' }}
- In these {{ ROUND_INSTRUCT_NUM }} rounds, payoffs will increase by a multiplication of two (x2), excluding the final
-payoff if passed. The final payoff is increased by a multiple of about 4 (x~4). Please keep in mind that
-the large and small piles alternate each turn.
-{{ endif}}
-
-{{ if group.treatment == 'higher_random' }}
- In these {{ ROUND_INSTRUCT_NUM }} rounds, payoffs will increase by a multiplication of two, excluding the final
-payoff if passed. The final payoff will either result in an extremely high payoff or nothing at all for both players.
-Please keep in mind that the large and small piles alternate each turn.
-{{ endif }}
-
+HERE SHOULD GO THE BASIC INSTRUCTIONS TO BE REFERENCED
 {{ endblock }}

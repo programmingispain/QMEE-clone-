@@ -9,61 +9,41 @@
 <p xmlns="http://www.w3.org/1999/html">
     <div id="otree-header" class="header">
         <h1 id="title">GAME NAME HERE</h1>
+    </div>
 <p xmlns="http://www.w3.org/1999/html"></p>
 <div id="otree-body" class="container">
     <p id="subHead">A game created by Cold Stone Creamery Gmbh</p>
-    </div>
-    General Rules:
-<p></p>
-    1. Please look only at your own devices to maintain integrity of the experiment.
+</div>
+    <span>How the game works:</span>
+        <style>
+            span {
+            font-size: 1.3em;
+            text-align: center;
+        </style>
     <p></p>
-    2. If you have any questions, or need help, ask an experimenter.
-    <p></p>
-    3. Follow the general class rules
-<p></p>
-<p>
-   <span>How the game works</span>
-    <style>
-        span {
-        font-size: 1.3em;
-        text-align: center;
-    </style>
-</p>
-
     You will be randomly paired with another participant. Each of you will take turns playing {{ C.NUM_ROUNDS }} rounds of a game,
-    either taking or passing. There are two different payoff sizes, the large pile and the small pile.
-    <p> You will be assigned either the red or blue player each round. The red player chooses first each round.</p>
+    either taking or passing. <strong>There are several variations of the game you will be playing in nonconsecutive orders.</strong>
+    <p> You will be assigned either the <font color="red">Red</font> or <font color="blue">Blue</font> player each round. The red player chooses first each round.</p>
     <p> If you take: the game ends and each player receives the listed payoffs for the turn.</p>
     <p> If you pass: the decision is passed to the other player and the game continues. Each time the game is passed, the payoffs increase.</p>
-    <p>Payoff piles alternate each turn. This means that when it is your turn, the payoff you receive will always be the large pile while your partner
-    receives the small pile. If it is your partners turn, then you will receive the smaller pile while they receive
-    the large pile.</p>
+    <p> The <font color="red">Red Player</font> receives the payoffs listed in <font color="red">red</font> typeface, the <font color="blue">Blue Player</font> receives the ones in <font color="blue">Blue</font>.</p>
+    <p> Your total payoff will be the total of all rounds combined.</p>
 
+    <p></p>
+    <p></p>
+    We will be monitoring while you play. If you have any questions or need help, ask an examiner.
+    <p>PS. Please keep eyes on your own devices to maintain experiment integrity.</p>
 
-    INSTRUCTIONS TO ADD  but better --v
-    total prize received is added up from each round's results
-     After {{ C.ROUND_INSTRUCT_NUM }} rounds of a game, you and your partner will play a new version of the game.
-    we will be monitoring while you play. Make sure to confirm your choices by clicking the next button or else you
-    will not be able to move forward in the game.
-    <!-- do we want to add a timeout that pushes the round forward? so players -->
-<p>
-</p>
-<style>
-p {
-  text-align: left;
-  font-size: 1.0em;
-}
-</style>
-</div>
-        <p>Example beginning game:</p>
+    <p></p>
+
+        <p>2 turn example:</p>
         <style>
             html{
             font-size: 1.2em;
             }
         </style>
- <div>
-            <svg class="bottom" id="svg" width="300" height="205" style="border: 2px rgb(204, 204, 204); margin-top: 10px; margin-right: 10px;">
-
+<div>
+    <svg class="bottom" id="svg" width="300" height="205" style="border: 2px rgb(204, 204, 204); margin-top: 10px; margin-right: 10px;">
         <defs>
             <marker id="arrowhead" markerWidth="5" markerHeight="5"
             refX="0" refY="2.5" orient="auto">
@@ -75,8 +55,8 @@ p {
             <circle cx="115" cy="65" r="14" stroke="black" stroke-width="2" fill="red" />
             <line x1="130" y1="65" x2="190" y2="65" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
             <line x1="115" y1="80" x2="115" y2="140" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
-            <text x="115" y="170" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">large pile</text>
-            <text x="115" y="195" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">small pile</text>
+            <text x="115" y="170" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">payoff red</text>
+            <text x="115" y="195" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">payoff blue</text>
             <text x="115" y="35" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">1st turn</text>
         </g>
 <!-- 2nd node -->
@@ -84,8 +64,8 @@ p {
             <circle cx="215" cy="65" r="15" stroke="black" stroke-width="2" fill="blue" />
             <line x1="230" y1="65" x2="280" y2="65" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
             <line x1="215" y1="80" x2="215" y2="140" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
-            <text x="215" y="170" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">small pile</text>
-            <text x="215" y="195" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">large pile</text>
+            <text x="215" y="170" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="red">$$</text>
+            <text x="215" y="195" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">$$</text>
             <text x="215" y="35" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">2nd turn</text>
         </g>
         <g>
@@ -103,11 +83,8 @@ p {
             >Take</text>
         </g>
             </svg>
-    </div>
-<p>
-
-</p>
-
+</div>
+<p></p>
     {% next_button %}
 
 {{ endblock }}

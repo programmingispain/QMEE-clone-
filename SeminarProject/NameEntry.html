@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+
+{% block title %}ID Entry{% endblock %}
+
+{% block content %}
+    <h1>Please enter your details</h1>
+    <p>Please enter the ID code you generated in the beginning of the semester. As a reminder,
+        this was created by writing the first 2 letters of your mother's name and the last 2 digits of your father's year of birth.</p>
+    <p>Example: Mother's name Helena and father's year of birth 1968 = ID: HE68.</p>
+    <p>Likewise, if you created a different ID, please input that here. This ensures that the data in this experiment is anonymized.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ formfield 'qmee_id' }}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

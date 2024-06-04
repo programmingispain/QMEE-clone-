@@ -8,12 +8,9 @@
 {% endblock %}
 
 {% block content %}
-
-<p xmlns="http://www.w3.org/1999/html">
-</p>
+<p xmlns="http://www.w3.org/1999/html"></p>
 <h3> Make Your Move!</h3>
-
-
+{{ include '_templates/global/BaseInstructions.html' }}
 <!-- Centipede
 
 <input type="hidden" name="take" id="take_here"/>-->
@@ -52,23 +49,7 @@
         </g>
     </svg>
     {{ endif }}
-        {{ if group.treatment == 'higher_fixed' }}
-    <svg class="middle" id="svg" width="650" height="205" fill="white" style="border: 2px rgb(204, 204, 204); margin-top: 10px; margin-right: 10px;">
-        <g>
-            <text x="610" y="65"
-                  dominant-baseline="middle" text-anchor="middle"
-                  font-size="20" font-weight="bold"
-                  fill="red"
-            >fixed</text>
-            <text x="610" y="85"
-                  dominant-baseline="middle" text-anchor="middle"
-                  font-size="20" font-weight="bold"
-                  fill="blue"
-            >fixed</text>
-        </g>
-    </svg>
-    {{ endif }}
-        {{ if group.treatment == 'higher_random' }}
+    {{ if group.treatment == 'higher_random' }}
     <svg class="middle" id="svg" width="680" height="205" fill="white" style="border: 2px rgb(204, 204, 204); margin-top: 10px; margin-right: 10px;">
         <g>
             <text x="630" y="65"

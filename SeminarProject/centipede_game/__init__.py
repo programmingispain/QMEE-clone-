@@ -190,7 +190,7 @@ class Decision(Page):
 
     @staticmethod
     def is_displayed(player: Player):
-        group = player.group  # display page to the appropriate player using even/odd round numbers
+        group = player.group   # display page to the appropriate player using even/odd round numbers
         return (
                 (player.id_in_group == 1 and player.group.node % 2 != 0 and group.round_active) or
                 (player.id_in_group == 2 and player.group.node % 2 == 0 and group.round_active)
