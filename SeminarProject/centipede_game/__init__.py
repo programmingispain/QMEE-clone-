@@ -87,7 +87,7 @@ def creating_session(subsession):
     for group in subsession.get_groups():
         if not treatment_hardcoded:  # checks for hardcoded exception
             treatment_order = group.treatment_order.split(',')
-            round_index = (group.round_number - 1) % len(treatment_order)  # uses modulo in case more rounds than treatments
+            round_index = (group.round_number - 1) % len(treatment_order) # uses modulo in case more rounds than treatments
             group.treatment = treatment_order[round_index]
 
     # set payoffs according to treatment
@@ -150,7 +150,6 @@ class Group(BaseGroup):
     def advance_node(group: 'Group'):
         group.node += 1
 
-    # noinspection PyMethodParameters
     def reshuffle_group(group: 'Group'):  # used to randomize positions within a group
         players = group.get_players()
         random.shuffle(players)
@@ -158,6 +157,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    qmee_id = models.StringField(label="Please enter your ID:") # an ID for the experimental econ course
     take = models.BooleanField(
         initial=False,
         label='',
@@ -170,6 +170,15 @@ class Player(BasePlayer):
     )
     cumulative_payoff = models.CurrencyField()
 
+class NameEntry(Page):
+    form_model = 'player'
+    form_fields = ['qmee_id']
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 1
+
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.label = player.qmee_id
 
 class Welcome(Page):
     @staticmethod
@@ -183,6 +192,13 @@ class Welcome(Page):
 class WaitForRoundStart(WaitPage):
     title_text = "Waiting for round to start"
 
+class PayoffPreview(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return True
+
+class WaitForBothPlayers(WaitPage):
+    title_text = "Waiting for both players"
 
 class Decision(Page):
     form_model = 'player'
@@ -190,7 +206,7 @@ class Decision(Page):
 
     @staticmethod
     def is_displayed(player: Player):
-        group = player.group   # display page to the appropriate player using even/odd round numbers
+        group = player.group # display page to the appropriate player using even/odd round numbers
         return (
                 (player.id_in_group == 1 and player.group.node % 2 != 0 and group.round_active) or
                 (player.id_in_group == 2 and player.group.node % 2 == 0 and group.round_active)
@@ -223,7 +239,6 @@ class WaitForDecision(WaitPage):
     @staticmethod
     def after_all_players_arrive(group: Group):
         pass
-
 
 class Results(Page):  # shows payoffs for this round
     @staticmethod
@@ -260,8 +275,11 @@ class ResultsCombined(Page):
 
 
 page_sequence = [
+    NameEntry,
     Welcome,
     WaitForRoundStart,
+    PayoffPreview,
+    WaitForBothPlayers,
     Decision,
     WaitForDecision,
     Decision,
@@ -275,6 +293,5 @@ page_sequence = [
     Decision,
     WaitForDecision,
     Results,
-    # WaitPage3,  # waits for everyone and advances to next round
     # ResultsCombined
 ]

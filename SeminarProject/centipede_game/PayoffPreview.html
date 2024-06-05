@@ -6,9 +6,14 @@
 {% endblock %}
 
 {% block content %}
-Please note the following payoffs for this round:
-
-<!--Insert picture here-->
+Please note the following payoffs and player color for this round:
+<!-- Player's color info -->
+    {% if player.id_in_group == 1 %}
+    <div class="card-header">You are the <font style="color:red;">RED</font> player and will move first</div>
+    {% else %}
+    <div class="card-header">You are the <font style="color:blue;">BLUE</font> player and will move second.<br>
+        You will have to wait until the <font style="color:red;">RED</font> player makes their choice.</div>
+    {% endif %}
 <div>
 {# Scalable vector for payoffs #}
     {{ if group.treatment == 'control' }}
@@ -59,15 +64,6 @@ Please note the following payoffs for this round:
         </g>
     </svg>
     {{ endif }}
-
-<!-- Player's color info -->
-<div class="card my-5">
-    {% if player.id_in_group == 1 %}
-    <div class="card-header">You are the <font style="color:red;">RED</font> player and will move first</div>
-    {% else %}
-    <div class="card-header">You are the <font style="color:blue;">BLUE</font> player and will move second</div>
-    {% endif %}
-</div>
     {# base centipede image
     does not change, does not alternate
     #}
@@ -128,7 +124,23 @@ Please note the following payoffs for this round:
             <text x="505" y="195" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="blue">128</text>
         </g>
     </svg>
-
+</div>
+<style>
+    .top{
+    position: absolute;
+    z-index: 1;
+    }
+.middle{
+    position: absolute;
+    z-index: 0.5;
+    }
+.bottom{
+    z-index: 0;
+    }
+.card-header{
+    background-color: Lavender;
+}
+</style><br>
 {% if group.treatment == 'higher_random' %}
 Note: if the end is reached without either player taking, players receive a random number between the range given,
 indicated by the color.
